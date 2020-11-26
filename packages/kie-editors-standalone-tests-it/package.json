@@ -9,9 +9,8 @@
   },
   "scripts": {
     "lint": "tslint -c ../../tslint.json 'src/**/*.{ts,tsx,js,jsx}'",
-    "build:fast": "rm -rf dist && yarn webpack",
-    "build": "yarn run lint && yarn build:fast",
-    "build:prod": "yarn run build --mode production --devtool none",
+    "build:it": "yarn run lint && rm -rf dist && yarn webpack",
+    "test:it": "yarn run cypress",
     "start": "webpack-dev-server"
   },
   "babel": {

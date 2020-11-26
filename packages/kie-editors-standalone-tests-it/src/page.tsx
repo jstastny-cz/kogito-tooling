@@ -5,7 +5,7 @@ import { DmnEditorComponent, BpmnEditorComponent } from "@kogito-tooling/kie-edi
 export const EditorPage: React.FC<{}> = () => {
   return (
     <Router>
-      <div>
+      <>
         <ul>
           <li>
             <Link to="/dmn-read-only">DMN Read Only</Link>
@@ -15,14 +15,14 @@ export const EditorPage: React.FC<{}> = () => {
           </li>
         </ul>
         <Switch>
-          <Route exact path="/dmn-read-only">
+          <Route exact={true} path="/dmn-read-only">
             <DmnEditorComponent id="dmn-read-only" readOnly={true} initialContent={Promise.resolve("")} />
           </Route>
-          <Route exact path="/bpmn">
+          <Route exact={true} path="/bpmn">
             <DmnEditorComponent id="bpmn" readOnly={true} initialContent={Promise.resolve("")} />
           </Route>
         </Switch>
-      </div>
+      </>
     </Router>
   );
 };
