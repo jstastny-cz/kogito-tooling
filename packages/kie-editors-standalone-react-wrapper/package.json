@@ -1,0 +1,31 @@
+{
+  "name": "@kogito-tooling/kie-editors-standalone-react-wrapper",
+  "version": "0.8.1",
+  "description": "",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiegroup/kogito-tooling.git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "@kogito-tooling/kie-editors-standalone": "0.8.1",
+    "@kogito-tooling/channel-common-api": "0.8.1"
+  },
+  "scripts": {
+    "lint": "tslint -c ../../tslint.json 'src/**/*.{ts,tsx,js,jsx}'",
+    "build:fast": "rm -rf dist && webpack --config webpack.config.js",
+    "build": "yarn run lint && yarn build:fast",
+    "build:prod": "yarn run build --mode production --devtool none"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ]
+  }
+}
