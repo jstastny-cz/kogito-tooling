@@ -76,9 +76,9 @@ export const EditorComponent: React.FC<InternalProps> = ({
     });
     setEditor(ed);
     return () => {
-      editor?.close();
+      ed!.close();
     };
-  }, []);
+  }, [id]);
 
   const setEditorContents = (resource: ResourcesHolderItem) => {
     return resource.value.content.then((value: string) => {
@@ -105,12 +105,23 @@ export const EditorComponent: React.FC<InternalProps> = ({
     editor?.markAsSaved();
   };
   const editorSvg = () => {
-    //TODO
-    editor!.getPreview().then(value => value);
+    editor!.getPreview().then(content => {
+      const elem = window.document.createElement("a");
+      elem.href = "data:text/svg+xml;charset=utf-8," + encodeURIComponent(content!);
+      elem.download = modelName + ".svg";
+      document.body.appendChild(elem);
+      elem.click();
+      document.body.removeChild(elem);
+    });
   };
   const editorXml = () => {
-    editor!.getContent().then(value => {
-      // TODO
+    editor!.getContent().then(content => {
+      const elem = window.document.createElement("a");
+      elem.href = "data:text/plain;charset=utf-8," + encodeURIComponent(content);
+      elem.download = modelName;
+      document.body.appendChild(elem);
+      elem.click();
+      document.body.removeChild(elem);
     });
   };
 
@@ -136,17 +147,6 @@ export const EditorComponent: React.FC<InternalProps> = ({
     );
   };
 
-  const renderLogs = () => {
-    // TODO
-    return (
-      <ul>
-        {logs.map(it => (
-          <li>{it}</li>
-        ))}
-      </ul>
-    );
-  };
-
   return (
     <>
       <FileLoader
@@ -157,12 +157,13 @@ export const EditorComponent: React.FC<InternalProps> = ({
         onResourceChange={forceUpdate}
         ouiaId={id}
       />
-      {dirty && <div id="dirty">Unsaved changes.</div>}
+      {dirty && (
+        <div id="dirty" data-ouia-component-type="content-dirty">
+          Unsaved changes.
+        </div>
+      )}
       {renderButtons()}
-      <div data-ouia-component-type="editor" data-ouia-component-id={id} ref={container} style={divstyle} />
-      <div data-ouia-component-type="test-log" data-ouia-component-id={id}>
-        {renderLogs()}
-      </div>
+      <div id={id} data-ouia-component-type="editor" data-ouia-component-id={id} ref={container} style={divstyle} />
     </>
   );
 };
