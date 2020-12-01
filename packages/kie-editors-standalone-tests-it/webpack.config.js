@@ -20,6 +20,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = merge(common, {
+  devtool: "",
   entry: {
     app: path.resolve(__dirname, "src", "index.tsx")
   },
@@ -34,9 +35,8 @@ module.exports = merge(common, {
     compress: true,
     inline: true,
     historyApiFallback: true,
-    hot: true,
     overlay: true,
-    open: true,
+    open: false,
     port: 9001
   }
 });

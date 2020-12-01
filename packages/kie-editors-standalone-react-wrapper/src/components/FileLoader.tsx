@@ -63,9 +63,29 @@ export const FileLoader: React.FC<Props> = ({
           return (
             <li data-ouia-component-type="file-list-item" data-ouia-component-id={item.name} key={item.name}>
               <span>{item.name}</span>
-              <button onClick={it => view(item)}>view</button>
-              {allowDownload && <button onClick={it => download(item)}>download</button>}
-              <button onClick={it => remove(item)}>remove</button>
+              <button
+                data-ouia-component-type="file-list-item-button"
+                data-ouia-component-id="view"
+                onClick={it => view(item)}
+              >
+                view
+              </button>
+              {allowDownload && (
+                <button
+                  data-ouia-component-type="file-list-item-button"
+                  data-ouia-component-id="download"
+                  onClick={it => download(item)}
+                >
+                  download
+                </button>
+              )}
+              <button
+                data-ouia-component-type="file-list-item-button"
+                data-ouia-component-id="remove"
+                onClick={it => remove(item)}
+              >
+                remove
+              </button>
             </li>
           );
         })}

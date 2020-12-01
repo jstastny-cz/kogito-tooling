@@ -10,8 +10,9 @@
   "scripts": {
     "lint": "tslint -c ../../tslint.json 'src/**/*.{ts,tsx,js,jsx}'",
     "build:it": "yarn run lint && rm -rf dist && yarn webpack",
-    "test:it": "yarn run cypress",
-    "start": "webpack-dev-server"
+    "cy:run": "yarn cypress run",
+    "start": "webpack-dev-server --mode development",
+    "test:it": "start-server-and-test start http://localhost:9001 cy:run"
   },
   "babel": {
     "presets": [
@@ -22,5 +23,11 @@
   "dependencies": {
     "@kogito-tooling/kie-editors-standalone-react-wrapper": "0.8.1",
     "html-webpack-plugin": "^4.5.0"
+  },
+  "devDependencies": {
+    "cypress": "^6.0.1",
+    "cypress-file-upload": "^4.1.1",
+    "cypress-iframe": "^1.0.1",
+    "start-server-and-test": "^1.11.6"
   }
 }

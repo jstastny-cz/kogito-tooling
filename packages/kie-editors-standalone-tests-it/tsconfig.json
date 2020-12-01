@@ -5,7 +5,13 @@
     "baseUrl": "./",
     "outDir": "dist",
     "jsx": "react",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+    "experimentalDecorators": false,
+    "downlevelIteration": false
   },
   "include": ["src"],
   "exclude": ["node_modules"]
