@@ -97,3 +97,6 @@ jobs:
 
       - name: Build testing app
         run: npx lerna run build:it --scope '@kogito-tooling/kie-editors-standalone-tests-it'
+
+      - name: Run tests
+        run: npx lerna run test:it --scope '@kogito-tooling/kie-editors-standalone-tests-it'
