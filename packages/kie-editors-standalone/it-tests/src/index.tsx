@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { EditorPage } from "./page";
+import { EditorPage } from "./pages/page";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { DmnEditorComponent, BpmnEditorComponent } from "@kogito-tooling/kie-editors-standalone-react-wrapper";
+import { DmnEditorComponent } from "../components/DmnEditorComponent";
+import { BpmnEditorComponent } from "../components/BpmnEditorComponent";
 
 export const EditorPage: React.FC<{}> = () => {
   return (

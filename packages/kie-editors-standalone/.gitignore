@@ -3,3 +3,5 @@ dist/
 coverage/
 target/
 .idea
+cypress/videos
+cypress/screenshots

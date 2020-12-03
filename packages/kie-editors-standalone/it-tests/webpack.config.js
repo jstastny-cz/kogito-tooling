@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-const { merge } = require("webpack-merge");
-const common = require("../../webpack.common.config");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-module.exports = merge(common, {
+module.exports = {
+  mode: "development",
   devtool: "",
   entry: {
     app: path.resolve(__dirname, "src", "index.tsx")
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js"
   },
   plugins: [
     new HtmlWebPackPlugin({
@@ -30,8 +33,21 @@ module.exports = merge(common, {
       filename: "index.html"
     })
   ],
+  resolve: {
+    alias: {},
+    extensions: [".tsx", ".ts", ".js", ".jsx"],
+    modules: [path.resolve("../../node_modules"), path.resolve("./node_modules"), path.resolve("./src")]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader"
+      }
+    ]
+  },
   devServer: {
-    contentBase: [path.join(__dirname, "./dist")],
+    contentBase: [path.join(__dirname, "dist"), path.join(__dirname, "../dist")],
     compress: true,
     inline: true,
     historyApiFallback: true,
@@ -39,4 +55,4 @@ module.exports = merge(common, {
     open: false,
     port: 9001
   }
-});
+};

@@ -1,9 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./it-tests",
     "module": "ES6",
-    "baseUrl": "./",
-    "outDir": "dist",
+    "outDir": "./dist",
     "jsx": "react",
     "moduleResolution": "node",
     "sourceMap": false,
@@ -13,6 +13,5 @@
     "experimentalDecorators": false,
     "downlevelIteration": false
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src"]
 }

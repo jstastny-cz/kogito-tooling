@@ -26,7 +26,11 @@
     "build": "yarn run lint && yarn test && yarn run build:fast",
     "build:prod": "yarn run lint && yarn test && rm -rf dist && webpack --config webpack.build-resources.config.js --mode production --devtool none && yarn run build:preprocessor && webpack --config webpack.package-resources.config.js --mode production --devtool none",
     "build:productization": "yarn run build:prod",
-    "start": "webpack-dev-server -d --host 0.0.0.0 --config webpack.package-resources.config.js"
+    "start": "webpack-dev-server -d --host 0.0.0.0 --config webpack.package-resources.config.js",
+    "build:it": "rm -rf it-tests/dist && webpack --config ./it-tests/webpack.config.js",
+    "start:it": "webpack-dev-server -d --host 0.0.0.0 --config ./it-tests/webpack.config.js",
+    "cy:run": "yarn cypress run --config-file ./it-tests/cypress.json",
+    "test:it": "start-server-and-test start:it http://localhost:9001 cy:run"
   },
   "babel": {
     "presets": [

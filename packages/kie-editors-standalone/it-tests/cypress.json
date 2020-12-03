@@ -1,0 +1,9 @@
+{
+  "numTestsKeptInMemory": 0,
+  "fixturesFolder": "it-tests/cypress/fixtures",
+  "integrationFolder": "it-tests/cypress/integration",
+  "pluginsFile": "it-tests/cypress/plugins/index.js",
+  "screenshotsFolder": "it-tests/cypress/screenshots",
+  "videosFolder": "it-tests/cypress/videos",
+  "supportFile": "it-tests/cypress/support/index.js"
+}
