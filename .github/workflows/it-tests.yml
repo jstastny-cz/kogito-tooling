@@ -93,10 +93,10 @@ jobs:
         run: yarn run init
 
       - name: Build repository
-        run: npx lerna run build:prod --scope '@kogito-tooling/kie-editors-standalone-react-wrapper' --include-dependencies
+        run: npx lerna run build:prod --scope '@kogito-tooling/kie-editors-standalone' --include-dependencies
 
       - name: Build testing app
-        run: npx lerna run build:it --scope '@kogito-tooling/kie-editors-standalone-tests-it'
+        run: npx lerna run build:it --scope '@kogito-tooling/kie-editors-standalone'
 
       - name: Run tests
-        run: npx lerna run test:it --scope '@kogito-tooling/kie-editors-standalone-tests-it'
+        run: npx lerna run test:it --scope '@kogito-tooling/kie-editors-standalone'
