@@ -17,7 +17,7 @@ describe("Dmn Read Only.", () => {
       .find("[data-testid='loading-screen-div']", { timeout: 100 })
       .should("be.visible");
     cy.iframe()
-      .find("[data-testid='loading-screen-div']", { timeout: 5000 })
+      .find("[data-testid='loading-screen-div']", { timeout: 60000 })
       .should("not.exist");
     cy.iframe()
       .find("[data-field='palettePanel']")
