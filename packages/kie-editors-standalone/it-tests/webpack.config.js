@@ -34,7 +34,6 @@ module.exports = {
     })
   ],
   resolve: {
-    alias: {},
     extensions: [".tsx", ".ts", ".js", ".jsx"],
     modules: [path.resolve("../../node_modules"), path.resolve("./node_modules"), path.resolve("./src")]
   },
@@ -46,8 +45,20 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    "@kogito-tooling/kie-editors-standalone/dist/dmn": {
+      commonjs: "@kogito-tooling/kie-editors-standalone/dist/dmn",
+      amd: "@kogito-tooling/kie-editors-standalone/dist/dmn",
+      root: "DmnEditor"
+    },
+    "@kogito-tooling/kie-editors-standalone/dist/bpmn": {
+      commonjs: "@kogito-tooling/kie-editors-standalone/dist/bpmn",
+      amd: "@kogito-tooling/kie-editors-standalone/dist/bpmn",
+      root: "BpmnEditor"
+    }
+  },
   devServer: {
-    contentBase: [path.join(__dirname, "dist"), path.join(__dirname, "../dist")],
+    contentBase: [path.join(__dirname, "dist"), path.join(__dirname, "../dist/")],
     compress: true,
     inline: true,
     historyApiFallback: true,
