@@ -110,7 +110,7 @@ export const EditorComponent: React.FC<InternalProps> = ({
   };
   const editorSave = () => {
     filesHolder.addFile(
-      { name: modelName, value: { contentType: ContentType.TEXT, content: editor!.getContent() } },
+      { name: modelName, value: { contentType: "text", content: editor!.getContent() } },
       forceUpdate
     );
     editor?.markAsSaved();

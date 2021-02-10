@@ -22,7 +22,7 @@ export interface ResourcesHolderItem {
 }
 
 export interface Resource {
-  contentType: ContentType;
+  contentType: string;
   content: Promise<string>;
 }
 
@@ -52,7 +52,7 @@ export class ResourcesHolder {
   public loadFile(file: File, onResourceChanged?: () => void): ResourcesHolder {
     const name: string = file.name;
     this.addFile(
-      { name, value: { contentType: ContentType.TEXT, content: this.readUploadedFileAsText(file) } },
+      { name, value: { contentType: "text", content: this.readUploadedFileAsText(file) } },
       onResourceChanged
     );
     return this;
